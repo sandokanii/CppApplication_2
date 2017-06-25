@@ -35,7 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/TPfinal.o
+	${OBJECTDIR}/clientes.o \
+	${OBJECTDIR}/facturacion.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/presupuesto.o \
+	${OBJECTDIR}/productos.o \
+	${OBJECTDIR}/proveedores.o
 
 
 # C Compiler Flags
@@ -62,10 +67,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapplication_2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapplication_2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/TPfinal.o: TPfinal.c
+${OBJECTDIR}/clientes.o: clientes.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TPfinal.o TPfinal.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/clientes.o clientes.c
+
+${OBJECTDIR}/facturacion.o: facturacion.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/facturacion.o facturacion.c
+
+${OBJECTDIR}/main.o: main.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/presupuesto.o: presupuesto.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/presupuesto.o presupuesto.c
+
+${OBJECTDIR}/productos.o: productos.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/productos.o productos.c
+
+${OBJECTDIR}/proveedores.o: proveedores.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/proveedores.o proveedores.c
 
 # Subprojects
 .build-subprojects:
