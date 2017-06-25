@@ -94,16 +94,16 @@ void menu(){
                 case 3:
                         switch(opcion2){
                             case 1:
-                                //AltaProvs();
+                                AltaProvs();
                                 break;
                             case 2:
-                                //BajaProvs();
+                                BajaProvs();
                                 break;
                             case 3:
-                                //ModifProvs();
+                                ModifProvs();
                                 break;
                             case 4:
-                                //ListadoProvs();
+                                ListadoProvs();
                                 break;
                             case 5:
                                 menu();
@@ -116,13 +116,13 @@ void menu(){
                                 AltaClientes();
                                 break;
                             case 2:
-                                //BajaClientes();
+                                BajaClientes();
                                 break;
                             case 3:
-                                //ModifClientes();
+                                ModifClientes();
                                 break;
                             case 4:
-                                //ListadoClientes();
+                                ListadoClientes();
                                 break;
                             case 5:
                                 menu();
