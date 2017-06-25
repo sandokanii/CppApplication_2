@@ -9,11 +9,11 @@
 void ModifClientes(){
 FILE *pf,*pfaux;
     Clientes  cliente;
-    char cuitaux;
+    int cuitaux;
     pf = fopen("Clientes.dat","r");
     pfaux = fopen("Clientesaux.dat","a");
     printf("Ingrese CUIT\n");
-    scanf("%s",&cuitaux);
+    scanf("%i",&cuitaux);
     fread(&cliente,sizeof(Clientes),1,pf);
         while (!feof(pf)){
                 if (cliente.cuit != cuitaux){
@@ -21,10 +21,12 @@ FILE *pf,*pfaux;
                     fwrite(&cliente,sizeof(Clientes),1,pfaux);
                 }else{
 					printf("Ingrese CUIT\n");
-					scanf("%s",cliente.cuit);
-					printf("Ingrese Cliente\n");
+					scanf("%i",cliente.cuit);
+					printf("Ingrese Denominacio Cliente\n");
 					scanf("%s",cliente.cliente);
+                                        fflush(stdin);
 					printf("Ingrese Fecha de alta\n");
+                                        fflush(stdin);
 					scanf("%s",cliente.fechaalta);
 					printf("Ingrese Email\n");
 					scanf("%s",cliente.email);
