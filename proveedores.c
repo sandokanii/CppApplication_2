@@ -10,7 +10,7 @@
 void AltaProvs(){
     FILE *pf;
     Proveedores  proveedor;
-    pf = fopen("proveedores.dat","ab");
+    pf = fopen("proveedores.dat","a");
     printf("Ingrese Codigo\n");
     scanf("%i",proveedor.codigo);
     printf("Ingrese Nombre\n");

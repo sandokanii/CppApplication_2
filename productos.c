@@ -10,7 +10,7 @@
 void AltaProds(){
     FILE *pf;
     Producto prod;
-    pf = fopen("Productos.dat","ab");
+    pf = fopen("Productos.dat","a");
     printf("Ingrese Codigo\n");
     scanf("%i",&prod.codigo);
     printf("Ingrese Detalle\n");
@@ -30,7 +30,7 @@ void AltaProds(){
 void ListadoProds(){
     FILE *pf;
     Producto prod;
-    pf = fopen("Productos.dat","rb");
+    pf = fopen("Productos.dat","r");
     fread(&prod,sizeof(Producto),1,pf);
     while(!feof(pf)){
         printf("%i ; %s ; %.2f ; %.2f ; %s\n",prod.codigo,prod.detalle,prod.precio,prod.costo,prod.prov);
@@ -42,8 +42,8 @@ void ModifProds(){
     FILE *pf,*pfaux;
     Producto prod;
     int codigoaux;
-    pf = fopen("Productos.dat","rb");
-    pfaux = fopen("Productosaux.dat","ab");
+    pf = fopen("Productos.dat","r");
+    pfaux = fopen("Productosaux.dat","a");
     printf("Ingrese Código\n");
     scanf("%i",&codigoaux);
     fread(&prod,sizeof(Producto),1,pf);
@@ -74,8 +74,8 @@ void BajaProds(){
     FILE *pf,*pfaux;
     Producto prod;
     int codigoaux;
-    pf = fopen("Productos.dat","rb");
-    pfaux = fopen("Productosaux.dat","ab");
+    pf = fopen("Productos.dat","r");
+    pfaux = fopen("Productosaux.dat","a");
     printf("Ingrese Código\n");
     scanf("%i",&codigoaux);
     fread(&prod,sizeof(Producto),1,pf);

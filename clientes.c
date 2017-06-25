@@ -56,7 +56,7 @@ FILE *pf;
 void AltaClientes(){
     FILE *pf;
     Clientes  cliente;
-    pf = fopen("clientes.dat","ab");
+    pf = fopen("clientes.dat","a");
     printf("Ingrese CUIT\n");
     scanf("%i",&cliente.cuit);
     printf("Ingrese Cliente\n");

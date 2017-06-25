@@ -10,7 +10,7 @@
 void AltaPresu(){
     FILE *pf;
     Presupuesto presu;
-    pf = fopen("Presupuesto.dat","ab");
+    pf = fopen("Presupuesto.dat","a");
     printf("Ingrese Código\n");
     scanf("%i",&presu.codigo);
     printf("Ingrese Fecha\n");
@@ -48,7 +48,7 @@ void ModifPresu(){
     FILE *pf,*pfaux;
     Presupuesto presu;
     int codigoaux;
-    pf = fopen("Presupuesto.dat","rb");
+    pf = fopen("Presupuesto.dat","r");
     pfaux = fopen("Presupuestoaux.dat","ab");
     printf("Ingrese Código\n");
     scanf("%i",&codigoaux);
@@ -80,8 +80,8 @@ void BajaPresu(){
     FILE *pf,*pfaux;
     Presupuesto presu;
     int codigoaux;
-    pf = fopen("Presupuesto.dat","rb");
-    pfaux = fopen("Presupuestoaux.dat","ab");
+    pf = fopen("Presupuesto.dat","r");
+    pfaux = fopen("Presupuestoaux.dat","a");
     printf("Ingrese Código\n");
     scanf("%i",&codigoaux);
     fread(&presu,sizeof(Presupuesto),1,pf);
