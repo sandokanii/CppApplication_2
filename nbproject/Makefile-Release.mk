@@ -38,6 +38,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/clientes.o \
 	${OBJECTDIR}/facturacion.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/menu1.o \
+	${OBJECTDIR}/menu2.o \
+	${OBJECTDIR}/menu3.o \
+	${OBJECTDIR}/menu4.o \
 	${OBJECTDIR}/presupuesto.o \
 	${OBJECTDIR}/productos.o \
 	${OBJECTDIR}/proveedores.o
@@ -81,6 +85,26 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/menu1.o: menu1.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menu1.o menu1.c
+
+${OBJECTDIR}/menu2.o: menu2.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menu2.o menu2.c
+
+${OBJECTDIR}/menu3.o: menu3.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menu3.o menu3.c
+
+${OBJECTDIR}/menu4.o: menu4.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menu4.o menu4.c
 
 ${OBJECTDIR}/presupuesto.o: presupuesto.c
 	${MKDIR} -p ${OBJECTDIR}

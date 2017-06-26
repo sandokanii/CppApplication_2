@@ -11,131 +11,55 @@
 #include "clientes.h"
 #include "productos.h"
 #include "presupuesto.h"
-
+#include "menu1.h"
+#include "menu2.h"
+#include "menu3.h"
+#include "menu4.h"
 void menu();
- 
-int main(){
-    menu();
+
+int main() {
+    menu();   
     return 0;
 }
- 
-void menu(){
-    int opcion,opcion2;
-    do{
+
+void menu() {
+    int opcion /*opcion2*/;
+    do {
+
         printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");        
-        printf("             -------------------------------------------\n");
-        printf("                          1) Presupuestos\n");
-        printf("                          2) Productos\n");
-        printf("                          3) Proveedores\n");
-        printf("                          4) Clientes\n");
+        printf("                          1) Productos\n");
+        printf("                          2) Proveedores\n");
+        printf("                          3) Clientes\n");
+        printf("                          4) Presupuestos y Facturas\n");
         printf("                          5) Salir\n");
         printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        scanf("%d",&opcion);
+        scanf("%d", &opcion);
         system("clear");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("                          1) Alta\n");
-        printf("                          2) Baja\n");
-        printf("                          3) Modificación\n");
-        printf("                          4) Listado\n");
-        printf("                          5) Volver al Menú\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        printf("             -------------------------------------------\n");
-        scanf("%d",&opcion2);
-        system("clear");
-            switch (opcion){
-                case 1:
-                        switch(opcion2){
-                            case 1:
-                                AltaPresu();
-                                break;
-                            case 2:
-                                BajaPresu();
-                                break;
-                            case 3:
-                                ModifPresu();
-                                break;
-                            case 4:
-                                ListadoPresu();
-                                break;
-                            case 5:
-                                menu();
-                                break;
-                        }
-                    break;
-                case 2:
-                        switch(opcion2){
-                            case 1:
-                                AltaProds();
-                                break;
-                            case 2:
-                                BajaProds();
-                                break;
-                            case 3:
-                                ModifProds();
-                                break;
-                            case 4:
-                                ListadoProds();
-                                break;
-                            case 5:
-                                menu();
-                                break;
-                        }
-                    break;
-                case 3:
-                        switch(opcion2){
-                            case 1:
-                                AltaProvs();
-                                break;
-                            case 2:
-                                BajaProvs();
-                                break;
-                            case 3:
-                                ModifProvs();
-                                break;
-                            case 4:
-                                ListadoProvs();
-                                break;
-                            case 5:
-                                menu();
-                                break;
-                        }
-                    break;
-                case 4:
-                        switch(opcion2){
-                            case 1:
-                                AltaClientes();
-                                break;
-                            case 2:
-                                BajaClientes();
-                                break;
-                            case 3:
-                                ModifClientes();
-                                break;
-                            case 4:
-                                ListadoClientes();
-                                break;
-                            case 5:
-                                menu();
-                                break;
-                        }
-                    break;
-                case 5:
-                    break;
- 
-            }
-    }while (opcion!=5);
+      
+        switch (opcion) {
+            case 4:
+                menu1();
+               
+                break;
+            case 1:
+                menu2();
+               
+                break;
+            case 2:
+                menu3();
+              
+                break;
+            case 3:
+                menu4();
+              
+                break;
+            case 5:
+                break;
+
+        }
+    } while (opcion != 5);
 }
- 
+
 
 
 

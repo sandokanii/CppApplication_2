@@ -14,11 +14,14 @@ void AltaProvs(){
     printf("Ingrese Codigo\n");
     scanf("%i",proveedor.codigo);
     printf("Ingrese Nombre\n");
-    scanf("%c",&proveedor.nombre);
+    fflush(stdin);
+    scanf("%s",&proveedor.nombre);
+    fflush(stdin);
     printf("Ingrese Telefono\n");
-    scanf("%c",&proveedor.telefono);
+    scanf("%s",&proveedor.telefono);
+    fflush(stdin);
     printf("Ingrese Email\n");
-    scanf("%c",&proveedor.email);
+    scanf("%s",&proveedor.email);
     fseek(pf,0L,SEEK_END);
     fwrite(&proveedor,sizeof(Proveedores),1,pf);
     fclose(pf);
@@ -61,11 +64,15 @@ void ModifProvs(){
                     fwrite(&proveedor,sizeof(Proveedores),1,pfaux);
                 }else{
                     printf("Ingrese Nombre\n");
+                    fflush(stdin);
                     scanf("%s",proveedor.nombre);
                     printf("Ingrese Telefono\n");
+                    fflush(stdin);
                     scanf("%s",proveedor.telefono);
                     printf("Ingrese Email\n");
+                    fflush(stdin);
                     scanf("%s",proveedor.email);
+                    fflush(stdin);
                     fseek(pfaux,0l,SEEK_END);
                     fwrite(&proveedor,sizeof(Proveedores),1,pfaux);
                 }

@@ -7,87 +7,94 @@
 #include <stdio.h>
 #include "productos.h"
 
-void AltaProds(){
+void AltaProds() {
     FILE *pf;
     Producto prod;
-    pf = fopen("Productos.dat","a");
+    pf = fopen("Productos.dat", "a");
     printf("Ingrese Codigo\n");
-    scanf("%i",&prod.codigo);
+    scanf("%i", &prod.codigo);
+    fflush(stdin);
     printf("Ingrese Detalle\n");
-    scanf("%s",prod.detalle);
+    scanf("%s", prod.detalle);
+    fflush(stdin);
     printf("Ingrese Precio\n");
-    scanf("%f",&prod.precio);
+    scanf("%f", &prod.precio);
+    fflush(stdin);
     printf("Ingrese Costo\n");
-    scanf("%f",&prod.costo);
+    scanf("%f", &prod.costo);
+    fflush(stdin);
     printf("Ingrese Proveedor\n");
-    scanf("%s",prod.prov);
-    fseek(pf,0L,SEEK_END);
-    fwrite(&prod,sizeof(Producto),1,pf);
+    scanf("%s", prod.prov);
+    fseek(pf, 0L, SEEK_END);
+    fwrite(&prod, sizeof (Producto), 1, pf);
     fclose(pf);
     system("clear");
-   
-} 
-void ListadoProds(){
+
+}
+
+void ListadoProds() {
     FILE *pf;
     Producto prod;
-    pf = fopen("Productos.dat","r");
-    fread(&prod,sizeof(Producto),1,pf);
-    while(!feof(pf)){
-        printf("%i ; %s ; %.2f ; %.2f ; %s\n",prod.codigo,prod.detalle,prod.precio,prod.costo,prod.prov);
-        fread(&prod,sizeof(Producto),1,pf);
+    pf = fopen("Productos.dat", "r");
+    fread(&prod, sizeof (Producto), 1, pf);
+    while (!feof(pf)) {
+        printf("%i ; %s ; %.2f ; %.2f ; %s\n", prod.codigo, prod.detalle, prod.precio, prod.costo, prod.prov);
+        fread(&prod, sizeof (Producto), 1, pf);
     }
     fclose(pf);
-} 
-void ModifProds(){
-    FILE *pf,*pfaux;
+}
+
+void ModifProds() {
+    FILE *pf, *pfaux;
     Producto prod;
     int codigoaux;
-    pf = fopen("Productos.dat","r");
-    pfaux = fopen("Productosaux.dat","a");
+    pf = fopen("Productos.dat", "r");
+    pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
-    scanf("%i",&codigoaux);
-    fread(&prod,sizeof(Producto),1,pf);
-        while (!feof(pf)){
-                if (prod.codigo != codigoaux){
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&prod,sizeof(Producto),1,pfaux);
-                }else{
-                    printf("Ingrese Detalle\n");
-                    scanf("%s",prod.detalle);
-                    printf("Ingrese Precio\n");
-                    scanf("%f",&prod.precio);
-                    printf("Ingrese Costo\n");
-                    scanf("%f",&prod.costo);
-                    printf("Ingrese Proveedor\n");
-                    scanf("%s",prod.prov);
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&prod,sizeof(Producto),1,pfaux);
-                }
-            fread(&prod,sizeof(Producto),1,pf);
+    scanf("%i", &codigoaux);
+    fread(&prod, sizeof (Producto), 1, pf);
+    while (!feof(pf)) {
+        if (prod.codigo != codigoaux) {
+            fseek(pfaux, 0l, SEEK_END);
+            fwrite(&prod, sizeof (Producto), 1, pfaux);
+        } else {
+            printf("Ingrese Detalle\n");
+            scanf("%s", prod.detalle);
+            printf("Ingrese Precio\n");
+            scanf("%f", &prod.precio);
+            printf("Ingrese Costo\n");
+            scanf("%f", &prod.costo);
+            printf("Ingrese Proveedor\n");
+            scanf("%s", prod.prov);
+            fseek(pfaux, 0l, SEEK_END);
+            fwrite(&prod, sizeof (Producto), 1, pfaux);
         }
+        fread(&prod, sizeof (Producto), 1, pf);
+    }
     fclose(pf);
     fclose(pfaux);
     remove("Productos.dat");
-    rename("Productosaux.dat","Productos.dat");
-} 
-void BajaProds(){
-    FILE *pf,*pfaux;
+    rename("Productosaux.dat", "Productos.dat");
+}
+
+void BajaProds() {
+    FILE *pf, *pfaux;
     Producto prod;
     int codigoaux;
-    pf = fopen("Productos.dat","r");
-    pfaux = fopen("Productosaux.dat","a");
+    pf = fopen("Productos.dat", "r");
+    pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
-    scanf("%i",&codigoaux);
-    fread(&prod,sizeof(Producto),1,pf);
-        while (!feof(pf)){
-                if (prod.codigo != codigoaux){
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&prod,sizeof(Producto),1,pfaux);
-                }
-            fread(&prod,sizeof(Producto),1,pf);
+    scanf("%i", &codigoaux);
+    fread(&prod, sizeof (Producto), 1, pf);
+    while (!feof(pf)) {
+        if (prod.codigo != codigoaux) {
+            fseek(pfaux, 0l, SEEK_END);
+            fwrite(&prod, sizeof (Producto), 1, pfaux);
         }
+        fread(&prod, sizeof (Producto), 1, pf);
+    }
     fclose(pf);
     fclose(pfaux);
     remove("Productos.dat");
-    rename("Productosaux.dat","Productos.dat");
+    rename("Productosaux.dat", "Productos.dat");
 }

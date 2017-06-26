@@ -5,6 +5,11 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>clientes.h</itemPath>
+      <itemPath>main.h</itemPath>
+      <itemPath>menu1.h</itemPath>
+      <itemPath>menu2.h</itemPath>
+      <itemPath>menu3.h</itemPath>
+      <itemPath>menu4.h</itemPath>
       <itemPath>presupuesto.h</itemPath>
       <itemPath>productos.h</itemPath>
       <itemPath>proveedores.h</itemPath>
@@ -19,6 +24,10 @@
       <itemPath>clientes.c</itemPath>
       <itemPath>facturacion.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>menu1.c</itemPath>
+      <itemPath>menu2.c</itemPath>
+      <itemPath>menu3.c</itemPath>
+      <itemPath>menu4.c</itemPath>
       <itemPath>presupuesto.c</itemPath>
       <itemPath>productos.c</itemPath>
       <itemPath>proveedores.c</itemPath>
@@ -52,6 +61,24 @@
       <item path="facturacion.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="presupuesto.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -93,6 +120,24 @@
       <item path="facturacion.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="menu4.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="presupuesto.c" ex="false" tool="0" flavor2="0">
       </item>
