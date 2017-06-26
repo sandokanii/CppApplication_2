@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>clientes.h</itemPath>
+      <itemPath>facturacion.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>menu1.h</itemPath>
       <itemPath>menu2.h</itemPath>
@@ -59,6 +60,8 @@
       <item path="clientes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="facturacion.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="facturacion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -118,6 +121,8 @@
       <item path="clientes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="facturacion.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="facturacion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

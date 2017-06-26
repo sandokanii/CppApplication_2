@@ -5,20 +5,8 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include "facturacion.h"
 
-typedef struct{
-    int numero;
-    char fecha[11];
-    char cuit[30];
-    char cliente[30];
-    char producto[30];
-    int cantidad;
-    float precio;
-    float total;
-    float descuento;
-}Factura;
-
-void AltaFactura();
 
 void AltaFactura(){   
     FILE *pf;

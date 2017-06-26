@@ -7,7 +7,7 @@
 #include <stdlib.h>
 //#include "proveedores.h"
 //#include "clientes.h"
-//#include "productos.h"
+#include "facturacion.h"
 #include "presupuesto.h"
 //#include "main.c"
 void menu();
@@ -39,7 +39,7 @@ void menu1(){
                                 ListadoPresu();
                                 break;
                             case 5:
-                                
+                                AltaFactura();
                                 break;
                                 case 6:
                                 menu();
