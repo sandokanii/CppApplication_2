@@ -15,7 +15,7 @@ void AltaProds() {
     scanf("%i", &prod.codigo);
     fflush(stdin);
     printf("Ingrese Detalle\n");
-    scanf("%s", prod.detalle);
+    gets(prod.detalle);
     fflush(stdin);
     printf("Ingrese Precio\n");
     scanf("%f", &prod.precio);
@@ -59,7 +59,7 @@ void ModifProds() {
             fwrite(&prod, sizeof (Producto), 1, pfaux);
         } else {
             printf("Ingrese Detalle\n");
-            scanf("%s", prod.detalle);
+            gets( prod.detalle);
             printf("Ingrese Precio\n");
             scanf("%f", &prod.precio);
             printf("Ingrese Costo\n");

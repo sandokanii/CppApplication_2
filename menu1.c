@@ -39,7 +39,11 @@ void menu1(){
                                 ListadoPresu();
                                 break;
                             case 5:
-                                AltaFactura();
+                                //AltaFactura();
+                                printf("\t\t-----------------\n");
+                                printf("\t\t-  Version 2.0  -\n");
+                                printf("\t\t-    paypal     -\n");
+                                printf("\t\t-----------------\n");
                                 break;
                                 case 6:
                                 menu();

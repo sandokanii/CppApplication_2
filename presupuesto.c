@@ -39,9 +39,9 @@ void ListadoPresu(){
  
         fread(&presu,sizeof(Presupuesto),1,pf);
     }
-    system("color C");
-    printf("presione [INTRO] para continuar...");
-    getchar();
+   // system("color C");
+  //  printf("presione [INTRO] para continuar...");
+   // getchar();
     fclose(pf);
 } 
 void ModifPresu(){

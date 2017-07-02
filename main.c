@@ -3,6 +3,13 @@
  * Author: sandro ivanovich y roberto calisto
  *
  * Created on 19 de junio de 2017, 15:41
+
+fgetc -> fputc
+fgets -> fputs
+fscanf -> fprintf
+fread -> fwrite (binarios)
+
+
  */
 
 #include <stdio.h>
@@ -18,6 +25,7 @@
 void menu();
 
 int main() {
+   // char proveedor[]
     menu();   
     return 0;
 }
