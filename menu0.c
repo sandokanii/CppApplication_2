@@ -5,16 +5,13 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "proveedores.h"
-//#include "clientes.h"
-//#include "productos.h"
-//#include "presupuesto.h"
-//#include "main.c"
+#include "menu1.h"
+#include "menu2.h"
+#include "menu3.h"
+#include "menu4.h"
 #include "DatoEmpresa.h"
 void DatoEmpresa();
-void menu();
-
-void menu3() {
+void menu() {
     FILE *pf;
     registro regist;
     pf = fopen("Registracion.dat", "r");
@@ -25,36 +22,39 @@ void menu3() {
         fread(&regist, sizeof (registro), 1, pf);
     }
     fclose(pf);
-    int opcion3 /*opcion2*/;
+    int opcion /*opcion2*/;
     do {
 
         printf("                          %s \n",nombre_empresa);
-        printf("             -------------Proveedores-------------------\n");
-        printf("                          1) Alta\n");
-        printf("                          2) Baja\n");
-        printf("                          3) Modificación\n");
-        printf("                          4) Listado\n");
-        printf("                          5) Volver al Menú\n");
+        printf("                          1) Productos\n");
+        printf("                          2) Proveedores\n");
+        printf("                          3) Clientes\n");
+        printf("                          4) Presupuestos y Facturas\n");
+        printf("                          5) Salir\n");
         printf("             -------------------------------------------\n");
-        scanf("%d", &opcion3);
+        scanf("%d", &opcion);
         system("clear");
-        switch (opcion3) {
+      
+        switch (opcion) {
+            case 4:
+                menu1();
+               
+                break;
             case 1:
-                AltaProvs();
+                menu2();
+               
                 break;
             case 2:
-                BajaProvs();
+                menu3();
+              
                 break;
             case 3:
-                ModifProvs();
-                break;
-            case 4:
-                ListadoProvs();
+                menu4();
+              
                 break;
             case 5:
-                menu();
                 break;
-        }
-    } while (opcion3 != 5);
-}
 
+        }
+    } while (opcion != 5);
+}

@@ -11,9 +11,34 @@
 void AltaProvs() {
     FILE *pf;
     Proveedores proveedor;
-    pf = fopen("Proveedores.dat", "a");
+    char codigo[5] ;
+    char codigo1[5];
+    int bandera =0;
+    pf = fopen("Proveedores.txt", "a");
+    fread(&proveedor, sizeof (Proveedores), 1, pf);
     printf("Ingrese Codigo\n");
-    scanf("%i", &proveedor.codigo);
+    scanf("%s", proveedor.codigo);
+    //fread(&proveedor, sizeof (Proveedores), 1, pf);
+    //while (getchar() != '\0'(pf));    
+  /*  while (!feof(pf)) 
+    {
+        sprintf(codigo, "%s", proveedor.codigo);
+        }
+        printf("%s",codigo);
+        if(codigo == codigo1){
+            printf("el codigo ya existe");
+            bandera = 1;
+        }else{
+            //fclose(pf);
+          // proveedor.codigo = codigo1;
+            bandera =2;
+            FILE *pf;
+            Proveedores proveedor;
+            pf = fopen("Proveedores.txt", "a");
+             //proveedor.codigo = codigo1;
+        }
+
+    if(bandera =2){*/
     while (getchar() != '\n');
     printf("Ingrese Nombre\n");
     fflush(stdin);
@@ -28,20 +53,20 @@ void AltaProvs() {
     fwrite(&proveedor, sizeof (Proveedores), 1, pf);
     fclose(pf);
     //system("clear");
-
+ 
 }
 
 void BajaProvs() {
     FILE *pf, *pfaux;
     Proveedores proveedor;
-    int codigoaux;
-    pf = fopen("Proveedores.dat", "r");
-    pfaux = fopen("Proveedoresaux.dat", "a");
+    char codigoaux[5];
+    pf = fopen("Proveedores.txt", "r");
+    pfaux = fopen("Proveedoresaux.txt", "a");
     printf("Ingrese Codigo\n");
-    scanf("%i", &codigoaux);
+    scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        if (proveedor.codigo != codigoaux) {
+        if (!(proveedor.codigo == codigoaux)) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         }
@@ -49,19 +74,19 @@ void BajaProvs() {
     }
     fclose(pf);
     fclose(pfaux);
-    remove("Proveedores.dat");
-    rename("Proveedoresaux.dat", "Proveedores.dat");
+    remove("Proveedores.txt");
+    rename("Proveedoresaux.txt", "Proveedores.txt");
 }
 
 void ModifProvs() {
     FILE *pf, *pfaux;
     Proveedores proveedor;
-    int codigoaux;
+    char codigoaux[5];
     int opcion;
-    pf = fopen("Provedores.dat", "r");
-    pfaux = fopen("Proveedoresaux.dat", "a");
+    pf = fopen("Provedores.txt", "r");
+    pfaux = fopen("Proveedoresaux.txt", "a");
     printf("Ingrese Codigo\n");
-    scanf("%i", &codigoaux);
+    scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
         if (proveedor.codigo != codigoaux) {
@@ -94,17 +119,17 @@ void ModifProvs() {
     }
     fclose(pf);
     fclose(pfaux);
-    remove("Proveedores.dat");
-    rename("Proveedoresaux.dat", "Proveedores.dat");
+    remove("Proveedores.txt");
+    rename("Proveedoresaux.txt", "Proveedores.txt");
 }
 
 void ListadoProvs() {
     FILE *pf;
     Proveedores proveedor;
-    pf = fopen("Proveedores.dat", "r");
+    pf = fopen("Proveedores.txt", "r");
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        printf("%i ; %s ; %s ; %s \n", proveedor.codigo, proveedor.nombre, proveedor.telefono, proveedor.email);
+        printf("%s ; %s ; %s ; %s \n", proveedor.codigo, proveedor.nombre, proveedor.telefono, proveedor.email);
         fread(&proveedor, sizeof (Proveedores), 1, pf);
     }
     fclose(pf);

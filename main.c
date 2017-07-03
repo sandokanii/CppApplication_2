@@ -22,53 +22,29 @@ fread -> fwrite (binarios)
 #include "menu2.h"
 #include "menu3.h"
 #include "menu4.h"
+#include "DatoEmpresa.h"
+#include "menu0.h"
 void menu();
 
 int main() {
-   // char proveedor[]
-    menu();   
-    return 0;
-}
 
-void menu() {
-    int opcion /*opcion2*/;
+    int opcion2 = 0;
+    int bande =0;
     do {
-
-        printf("             -------------------------------------------\n");
-        printf("                          1) Productos\n");
-        printf("                          2) Proveedores\n");
-        printf("                          3) Clientes\n");
-        printf("                          4) Presupuestos y Facturas\n");
-        printf("                          5) Salir\n");
-        printf("             -------------------------------------------\n");
-        scanf("%d", &opcion);
-        system("clear");
-      
-        switch (opcion) {
-            case 4:
-                menu1();
-               
-                break;
+        printf("Ya a refistrado su empresa (1-Si, 2-No)\n");
+        scanf("%d", &opcion2);
+        fflush(stdin);
+        switch (opcion2) {
             case 1:
-                menu2();
-               
+                menu();
                 break;
             case 2:
-                menu3();
-              
+                DatoEmpresa();
+                menu();
                 break;
-            case 3:
-                menu4();
-              
-                break;
-            case 5:
-                break;
-
+            default: printf("seleccione opcion 1 o 2 ");
+                bande = 1;
         }
-    } while (opcion != 5);
+    } while (!(bande = 1));
+    return 0;
 }
-
-
-
-
-
