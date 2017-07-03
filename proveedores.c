@@ -11,50 +11,41 @@
 void AltaProvs() {
     FILE *pf;
     Proveedores proveedor;
-    char codigo[5] ;
+    char codigo[5];
     char codigo1[5];
-    int bandera =0;
-    pf = fopen("Proveedores.txt", "a");
-    fread(&proveedor, sizeof (Proveedores), 1, pf);
+    int bandera = 0;
+    pf = fopen("Proveedores.txt", "r+");    
+    do{
     printf("Ingrese Codigo\n");
-    scanf("%s", proveedor.codigo);
-    //fread(&proveedor, sizeof (Proveedores), 1, pf);
-    //while (getchar() != '\0'(pf));    
-  /*  while (!feof(pf)) 
-    {
-        sprintf(codigo, "%s", proveedor.codigo);
-        }
-        printf("%s",codigo);
-        if(codigo == codigo1){
-            printf("el codigo ya existe");
+    scanf("%s", codigo1);  
+    bandera = 0;
+    while (!feof(pf)) {
+        
+        fread(&proveedor, sizeof (Proveedores), 1, pf);
+        if (strcmp(proveedor.codigo, codigo1) == 0) {
+            printf("el codigo ya existe\n");
             bandera = 1;
-        }else{
-            //fclose(pf);
-          // proveedor.codigo = codigo1;
-            bandera =2;
-            FILE *pf;
-            Proveedores proveedor;
-            pf = fopen("Proveedores.txt", "a");
-             //proveedor.codigo = codigo1;
         }
+    }
+    } while(!(bandera == 0));
+        strcpy(proveedor.codigo , codigo1);
+        bandera = 2;
+        while (getchar() != '\n');
+        printf("Ingrese Nombre\n");
+        fflush(stdin);
+        gets(proveedor.nombre);
+        printf("Ingrese Email\n");
+        fflush(stdin);
+        scanf("%s", proveedor.email);
+        printf("Ingrese Telefono\n");
+        fflush(stdin);
+        scanf("%s", proveedor.telefono);
+        fseek(pf, 0L, SEEK_END);
+        fwrite(&proveedor, sizeof (Proveedores), 1, pf);
+        fclose(pf);
+        system("clear");
+    }
 
-    if(bandera =2){*/
-    while (getchar() != '\n');
-    printf("Ingrese Nombre\n");
-    fflush(stdin);
-    gets( proveedor.nombre);
-    printf("Ingrese Email\n");
-    fflush(stdin);
-    scanf("%s", proveedor.email);
-    printf("Ingrese Telefono\n");
-    fflush(stdin);
-    scanf("%s", proveedor.telefono);
-    fseek(pf, 0L, SEEK_END);
-    fwrite(&proveedor, sizeof (Proveedores), 1, pf);
-    fclose(pf);
-    //system("clear");
- 
-}
 
 void BajaProvs() {
     FILE *pf, *pfaux;
@@ -99,7 +90,7 @@ void ModifProvs() {
                 case 1:
                     printf("Ingrese Nombre\n");
                     fflush(stdin);
-                    gets( proveedor.nombre);
+                    gets(proveedor.nombre);
                     break;
                 case 2:
                     printf("Ingrese Telefono\n");

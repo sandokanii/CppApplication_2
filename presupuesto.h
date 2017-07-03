@@ -28,14 +28,14 @@ extern "C" {
 #endif /* PRESUPUESTO_H */
 
 typedef struct{
-    int codigo;
+    char codigo[5];
     char fecha[11];
     char cuit[30];
     float total;
     float descuento;
 }Presupuesto; 
 typedef struct{
-    int codigo;
+    char codigo[5];
     char producto[30];
     int cantidad;
     float precio;

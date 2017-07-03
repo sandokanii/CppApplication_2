@@ -27,7 +27,7 @@ extern "C" {
 
 #endif /* CLIENTES_H */
 typedef struct{
-    int cuit;
+    char cuit;
     char cliente[30];
     char fechaalta[11];
     char email[30];

@@ -5,14 +5,30 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "productos.h"
 
 void AltaProds() {
     FILE *pf;
     Producto prod;
-    pf = fopen("Productos.dat", "a");
+    pf = fopen("Productos.dat", "r+");
+    char codigo[5];
+    char codigo1[5];
+    int bandera = 0;        
+    do{
     printf("Ingrese Codigo\n");
-    scanf("%i", &prod.codigo);
+    scanf("%s", codigo1);  
+    bandera = 0;
+    while (!feof(pf)) {
+        fread(&prod, sizeof (Producto), 1, pf);
+        if (strcmp(prod.codigo, codigo1) == 0) {
+            printf("el codigo ya existe\n");
+            bandera = 1;
+        }
+    }
+    } while(!(bandera == 0));
+        strcpy(prod.codigo , codigo1);
+        bandera = 2;
     fflush(stdin);
     printf("Ingrese Detalle\n");
     gets(prod.detalle);
@@ -47,7 +63,7 @@ void ListadoProds() {
 void ModifProds() {
     FILE *pf, *pfaux;
     Producto prod;
-    int codigoaux;
+    char codigoaux[5];
     pf = fopen("Productos.dat", "r");
     pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
@@ -80,7 +96,7 @@ void ModifProds() {
 void BajaProds() {
     FILE *pf, *pfaux;
     Producto prod;
-    int codigoaux;
+    char codigoaux[5];
     pf = fopen("Productos.dat", "r");
     pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
