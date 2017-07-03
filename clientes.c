@@ -80,7 +80,7 @@ void AltaClientes() {
     } while(!(bandera == 0));
         strcpy(cliente.cuit , cuit1);
         bandera = 2;
-    printf("Ingrese CUIT\n");
+;
     printf("Ingrese Cliente\n");
     scanf("%s", cliente.cliente);
     printf("Ingrese Fecha de alta\n");
