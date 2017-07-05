@@ -43,7 +43,7 @@ void AltaProvs() {
         fseek(pf, 0L, SEEK_END);
         fwrite(&proveedor, sizeof (Proveedores), 1, pf);
         fclose(pf);
-        system("clear");
+        //system("clear");
     }
 
 
@@ -57,7 +57,7 @@ void BajaProvs() {
     scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        if (!(proveedor.codigo == codigoaux)) {
+        if (strcmp(proveedor.codigo, codigoaux) == 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         }
@@ -80,7 +80,7 @@ void ModifProvs() {
     scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        if (proveedor.codigo != codigoaux) {
+        if (strcmp(proveedor.codigo, codigoaux) == 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         } else {

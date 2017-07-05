@@ -30,8 +30,9 @@ void AltaProds() {
         strcpy(prod.codigo , codigo1);
         bandera = 2;
     fflush(stdin);
+    while(getchar()!='\n');
     printf("Ingrese Detalle\n");
-    gets(prod.detalle);
+    fgets(prod.detalle,28,stdin);
     fflush(stdin);
     printf("Ingrese Precio\n");
     scanf("%f", &prod.precio);
@@ -54,7 +55,7 @@ void ListadoProds() {
     pf = fopen("Productos.dat", "r");
     fread(&prod, sizeof (Producto), 1, pf);
     while (!feof(pf)) {
-        printf("%i ; %s ; %.2f ; %.2f ; %s\n", prod.codigo, prod.detalle, prod.precio, prod.costo, prod.prov);
+        printf("%s ; %s ; %.2f ; %.2f ; %s\n", prod.codigo, prod.detalle, prod.precio, prod.costo, prod.prov);
         fread(&prod, sizeof (Producto), 1, pf);
     }
     fclose(pf);
@@ -67,13 +68,14 @@ void ModifProds() {
     pf = fopen("Productos.dat", "r");
     pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
-    scanf("%i", &codigoaux);
+    scanf("%s", codigoaux);
     fread(&prod, sizeof (Producto), 1, pf);
     while (!feof(pf)) {
-        if (prod.codigo != codigoaux) {
+        if (strcmp(prod.codigo,codigoaux) != 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&prod, sizeof (Producto), 1, pfaux);
         } else {
+            while(getchar()!='\n');
             printf("Ingrese Detalle\n");
             gets( prod.detalle);
             printf("Ingrese Precio\n");
@@ -100,10 +102,10 @@ void BajaProds() {
     pf = fopen("Productos.dat", "r");
     pfaux = fopen("Productosaux.dat", "a");
     printf("Ingrese Código\n");
-    scanf("%i", &codigoaux);
+    scanf("%s", codigoaux);
     fread(&prod, sizeof (Producto), 1, pf);
     while (!feof(pf)) {
-        if (prod.codigo != codigoaux) {
+        if (strcmp(prod.codigo,codigoaux) != 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&prod, sizeof (Producto), 1, pfaux);
         }
