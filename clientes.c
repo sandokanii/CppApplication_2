@@ -46,31 +46,7 @@ void ModifClientes() {
             fwrite(&cliente, sizeof (Clientes), 1, pf);
         } else {
             printf("no existe el solicitado\n");
-           /* printf("Ingrese  opcion a modificar: 1 denominacion, 2 fecha alta, 3 Email, 4 telefono\n");
-            scanf("%i", &opcion);
-            switch (opcion) {
-                case 1 :          
-            printf("Ingrese Denominacion Cliente\n");
-            scanf("%s", cliente.cliente);
-            break;
-                case 2:
-            fflush(stdin);
-            printf("Ingrese Fecha de alta\n");
-            fflush(stdin);
-            scanf("%s", cliente.fechaalta);
-            break;
-                case 3:
-            printf("Ingrese Email\n");
-            scanf("%s", cliente.email);
-            break;
-                case 4:
-            printf("Ingrese Telefono\n");
-            scanf("%s", cliente.telefono);
-            break;*/
-        
-           // fseek(pf, 0L, SEEK_END);
-          //  fwrite(&cliente, sizeof (Clientes), 1, pf);
-         //   fclose(pf);
+          
             system("clear");
             
         }

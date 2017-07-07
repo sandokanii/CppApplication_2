@@ -75,7 +75,7 @@ void ModifProds() {
         if (strcmp(prod.codigo, codigoaux) == 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&prod, sizeof (Producto), 1, pfaux);
-        } else {
+        
             printf("Ingrese  opcion a modificar: 1 detalle, 2 Precio, 3 Costo, 4 Proveedor\n");
             scanf("%i", &opcion);
             switch (opcion) {
@@ -95,13 +95,14 @@ void ModifProds() {
                 case 4:
                     printf("Ingrese Proveedor\n");
                     scanf("%s", prod.prov);
-                 break;   
+                 break; 
+            }
                     fseek(pfaux, 0l, SEEK_END);
                     fwrite(&prod, sizeof (Producto), 1, pfaux);
             }
             fread(&prod, sizeof (Producto), 1, pf);
         }
-    }
+    
         fclose(pf);
         fclose(pfaux);
         remove("Productos.txt");
