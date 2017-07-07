@@ -17,7 +17,7 @@ void menu();
 void menu3() {
     FILE *pf;
     registro regist;
-    pf = fopen("Registracion.dat", "r");
+    pf = fopen("Registracion.txt", "r");
     char nombre_empresa[30];
     fread(&regist, sizeof (registro), 1, pf);
     while (!feof(pf)) {

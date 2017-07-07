@@ -17,7 +17,7 @@ void DatoEmpresa(){
  char nombre_empresa[30];
     FILE *pf;
     registro regist;
-    pf = fopen("Registracion.dat", "a");
+    pf = fopen("Registracion.txt", "a");
     //registro base[1];
     while (getchar() != '\n');
     printf("Registre la entidad\n");

@@ -12,45 +12,80 @@ void ModifClientes() {
     FILE *pf, *pfaux;
     Clientes cliente;
     char cuitaux[30];
-    pf = fopen("Clientes.dat", "r");
-    pfaux = fopen("Clientesaux.dat", "a");
+    int opcion;
+    pf = fopen("Clientes.txt", "r+");
+   // pfaux = fopen("Clientesaux.txt", "a");
     printf("Ingrese CUIT\n");
     scanf("%s", cuitaux);
     fread(&cliente, sizeof (Clientes), 1, pf);
     while (!feof(pf)) {
-        if (cliente.cuit != cuitaux) {
-            fseek(pfaux, 0l, SEEK_END);
-            fwrite(&cliente, sizeof (Clientes), 1, pfaux);
-        } else {
-            printf("Ingrese CUIT\n");
-            scanf("%s", cliente.cuit);
-            printf("Ingrese Denominacio Cliente\n");
+        if (strcmp(cliente.cuit, cuitaux) == 0) {
+            printf("Ingrese  opcion a modificar: 1 denominacion, 2 fecha alta, 3 Email, 4 telefono\n");
+            scanf("%i", &opcion);
+            switch (opcion) {
+                case 1 :          
+            printf("Ingrese Denominacion Cliente\n");
             scanf("%s", cliente.cliente);
+            break;
+                case 2:
             fflush(stdin);
             printf("Ingrese Fecha de alta\n");
             fflush(stdin);
             scanf("%s", cliente.fechaalta);
+            break;
+                case 3:
             printf("Ingrese Email\n");
             scanf("%s", cliente.email);
+            break;
+                case 4:
             printf("Ingrese Telefono\n");
             scanf("%s", cliente.telefono);
-            fseek(pf, 0L, SEEK_END);
+            break;
+            }
+            fseek(pf, 0l, SEEK_END);
             fwrite(&cliente, sizeof (Clientes), 1, pf);
-            fclose(pf);
+        } else {
+            printf("no existe el solicitado\n");
+           /* printf("Ingrese  opcion a modificar: 1 denominacion, 2 fecha alta, 3 Email, 4 telefono\n");
+            scanf("%i", &opcion);
+            switch (opcion) {
+                case 1 :          
+            printf("Ingrese Denominacion Cliente\n");
+            scanf("%s", cliente.cliente);
+            break;
+                case 2:
+            fflush(stdin);
+            printf("Ingrese Fecha de alta\n");
+            fflush(stdin);
+            scanf("%s", cliente.fechaalta);
+            break;
+                case 3:
+            printf("Ingrese Email\n");
+            scanf("%s", cliente.email);
+            break;
+                case 4:
+            printf("Ingrese Telefono\n");
+            scanf("%s", cliente.telefono);
+            break;*/
+        
+           // fseek(pf, 0L, SEEK_END);
+          //  fwrite(&cliente, sizeof (Clientes), 1, pf);
+         //   fclose(pf);
             system("clear");
+            
         }
         fread(&cliente, sizeof (Clientes), 1, pf);
     }
     fclose(pf);
-    fclose(pfaux);
-    remove("Clientes.dat");
-    rename("Clientesaux.dat", "Clientes.dat");
+    //fclose(pfaux);
+   // remove("Clientes.txt");
+   // rename("Clientesaux.txt", "Clientes.txt");
 }
 
 void ListadoClientes() {
     FILE *pf;
     Clientes cliente;
-    pf = fopen("Clientes.dat", "r");
+    pf = fopen("Clientes.txt", "r");
     fread(&cliente, sizeof (Clientes), 1, pf);
     while (!feof(pf)) {
         printf("%s ; %s ; %s ; %s ; %s \n", cliente.cuit, cliente.cliente, cliente.fechaalta, cliente.email, cliente.telefono);
@@ -62,7 +97,7 @@ void ListadoClientes() {
 void AltaClientes() {
     FILE *pf;
     Clientes cliente;
-    pf = fopen("clientes.dat", "r+");
+    pf = fopen("clientes.txt", "r+");
     char cuit[30];
     char cuit1[30];
     int bandera = 0;        
@@ -80,15 +115,19 @@ void AltaClientes() {
     } while(!(bandera == 0));
         strcpy(cliente.cuit , cuit1);
         bandera = 2;
-;
+ while (getchar() != '\n');
     printf("Ingrese Cliente\n");
-    scanf("%s", cliente.cliente);
+    gets(cliente.cliente);
+    fflush(stdin);
     printf("Ingrese Fecha de alta\n");
-    scanf("%s", cliente.fechaalta);
+    gets( cliente.fechaalta);
+    fflush(stdin);
     printf("Ingrese Email\n");
     scanf("%s", cliente.email);
+    fflush(stdin);
     printf("Ingrese Telefono\n");
     scanf("%s", cliente.telefono);
+    fflush(stdin);
     fseek(pf, 0L, SEEK_END);
     fwrite(&cliente, sizeof (Clientes), 1, pf);
     fclose(pf);
@@ -101,13 +140,13 @@ void BajaClientes() {
     FILE *pf, *pfaux;
     Clientes cliente;
     char cuitaux[30];
-    pf = fopen("Clientes.dat", "r");
-    pfaux = fopen("Clientesaux.dat", "a");
+    pf = fopen("Clientes.txt", "r");
+    pfaux = fopen("Clientesaux.txt", "a");
     printf("Ingrese CUIT\n");
     scanf("%s", cuitaux);
     fread(&cliente, sizeof (Clientes), 1, pf);
     while (!feof(pf)) {
-        if (cliente.cuit != cuitaux) {
+        if (strcmp(cliente.cuit, cuitaux) != 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&cliente, sizeof (Clientes), 1, pfaux);
         }
@@ -115,6 +154,6 @@ void BajaClientes() {
     }
     fclose(pf);
     fclose(pfaux);
-    remove("Clientes.dat");
-    rename("Clientesaux.dat", "Clientes.dat");
+    remove("Clientes.txt");
+    rename("Clientesaux.txt", "Clientes.txt");
 }

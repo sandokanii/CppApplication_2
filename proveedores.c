@@ -11,41 +11,40 @@
 void AltaProvs() {
     FILE *pf;
     Proveedores proveedor;
-    char codigo[5];
+    //char codigo[5];
     char codigo1[5];
     int bandera = 0;
-    pf = fopen("Proveedores.txt", "r+");    
-    do{
-    printf("Ingrese Codigo\n");
-    scanf("%s", codigo1);  
-    bandera = 0;
-    while (!feof(pf)) {
-        
-        fread(&proveedor, sizeof (Proveedores), 1, pf);
-        if (strcmp(proveedor.codigo, codigo1) == 0) {
-            printf("el codigo ya existe\n");
-            bandera = 1;
-        }
-    }
-    } while(!(bandera == 0));
-        strcpy(proveedor.codigo , codigo1);
-        bandera = 2;
-        while (getchar() != '\n');
-        printf("Ingrese Nombre\n");
-        fflush(stdin);
-        gets(proveedor.nombre);
-        printf("Ingrese Email\n");
-        fflush(stdin);
-        scanf("%s", proveedor.email);
-        printf("Ingrese Telefono\n");
-        fflush(stdin);
-        scanf("%s", proveedor.telefono);
-        fseek(pf, 0L, SEEK_END);
-        fwrite(&proveedor, sizeof (Proveedores), 1, pf);
-        fclose(pf);
-        //system("clear");
-    }
+    pf = fopen("Proveedores.txt", "r+");
+    do {
+        printf("Ingrese Codigo\n");
+        scanf("%s", codigo1);
+        bandera = 0;
+        while (!feof(pf)) {
 
+            fread(&proveedor, sizeof (Proveedores), 1, pf);
+            if (strcmp(proveedor.codigo, codigo1) == 0) {
+                printf("el codigo ya existe\n");
+                bandera = 1;
+            }
+        }
+    } while (!(bandera == 0));
+    strcpy(proveedor.codigo, codigo1);
+    bandera = 2;
+    while (getchar() != '\n');
+    printf("Ingrese Nombre\n");
+    fflush(stdin);
+    gets(proveedor.nombre);
+    printf("Ingrese Email\n");
+    fflush(stdin);
+    scanf("%s", proveedor.email);
+    printf("Ingrese Telefono\n");
+    fflush(stdin);
+    scanf("%s", proveedor.telefono);
+    fseek(pf, 0L, SEEK_END);
+    fwrite(&proveedor, sizeof (Proveedores), 1, pf);
+    fclose(pf);
+    //system("clear");
+}
 
 void BajaProvs() {
     FILE *pf, *pfaux;
@@ -57,7 +56,7 @@ void BajaProvs() {
     scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        if (strcmp(proveedor.codigo, codigoaux) == 0) {
+        if (strcmp(proveedor.codigo, codigoaux) != 0) {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         }
@@ -80,17 +79,16 @@ void ModifProvs() {
     scanf("%s", codigoaux);
     fread(&proveedor, sizeof (Proveedores), 1, pf);
     while (!feof(pf)) {
-        if (strcmp(proveedor.codigo, codigoaux) == 0) {
-            fseek(pfaux, 0l, SEEK_END);
-            fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
-        } else {
+        if (strcmp(proveedor.codigo, codigoaux) == 0) {            
             printf("Ingrese  opcion a modificar: 1 Nombre, 2 Telefono, 3 Email");
-            scanf("%i", opcion);
+            scanf("%i", &opcion);
             switch (opcion) {
                 case 1:
                     printf("Ingrese Nombre\n");
                     fflush(stdin);
-                    gets(proveedor.nombre);
+                    fgets(proveedor.nombre, 28, stdin);
+                    fseek(pfaux, 0l, SEEK_END);
+                    fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
                     break;
                 case 2:
                     printf("Ingrese Telefono\n");
@@ -105,8 +103,11 @@ void ModifProvs() {
             }
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
+        } else {
+            printf("no esta registrado");           
         }
         fread(&proveedor, sizeof (Proveedores), 1, pf);
+        printf("no se k paso");
     }
     fclose(pf);
     fclose(pfaux);

@@ -8,108 +8,124 @@
 #include <string.h>
 #include "presupuesto.h"
 
-void AltaPresu(){
+void AltaPresu() {
     FILE *pf;
     Presupuesto presu;
-    pf = fopen("Presupuesto.dat", "r+");
-    char codigo[5];
+    pf = fopen("Presupuesto.txt", "r+");
+    //char codigo[5];
     char codigo1[5];
-    int bandera = 0;        
-    do{
-    printf("Ingrese Codigo\n");
-    scanf("%s", codigo1);  
-    bandera = 0;
-    while (!feof(pf)) {
-        fread(&presu, sizeof (Presupuesto), 1, pf);
-        if (strcmp(presu.codigo, codigo1) == 0) {
-            printf("el codigo ya existe\n");
-            bandera = 1;
+    int bandera = 0;
+    do {
+        printf("Ingrese Codigo\n");
+        scanf("%s", codigo1);
+        bandera = 0;
+        while (!feof(pf)) {
+            fread(&presu, sizeof (Presupuesto), 1, pf);
+            if (strcmp(presu.codigo, codigo1) == 0) {
+                printf("el codigo ya existe\n");
+                bandera = 1;
+            }
         }
-    }
-    } while(!(bandera == 0));
-        strcpy(presu.codigo , codigo1);
-        bandera = 2;
+    } while (!(bandera == 0));
+    strcpy(presu.codigo, codigo1);
+    bandera = 2;
     printf("Ingrese Fecha\n");
-    scanf("%s",presu.fecha);
+    scanf("%s", presu.fecha);
     printf("Ingrese CUIT\n");
-    scanf("%s",presu.cuit);
+    scanf("%s", presu.cuit);
     printf("Ingrese Total\n");
-    scanf("%f",&presu.total);
+    scanf("%f", &presu.total);
     printf("Ingrese Descuento\n");
-    scanf("%f",&presu.descuento);
-    fseek(pf,0L,SEEK_END);
-    fwrite(&presu,sizeof(Presupuesto),1,pf);
+    scanf("%f", &presu.descuento);
+    fseek(pf, 0L, SEEK_END);
+    fwrite(&presu, sizeof (Presupuesto), 1, pf);
     fclose(pf);
     system("clear");
-    
-    
-    
+
+
+
 }
-void ListadoPresu(){
+
+void ListadoPresu() {
     FILE *pf;
     Presupuesto presu;
-    pf = fopen("Presupuesto.dat","r");
-    fread(&presu,sizeof(Presupuesto),1,pf);
-    while(!feof(pf)){
-        printf("\n\t\t%s ; %s ; %s ; %.2f ; %.2f\n",presu.codigo,presu.fecha,presu.cuit,presu.total,presu.descuento);
- 
-        fread(&presu,sizeof(Presupuesto),1,pf);
+    pf = fopen("Presupuesto.txt", "r");
+    fread(&presu, sizeof (Presupuesto), 1, pf);
+    while (!feof(pf)) {
+        printf("\n\t\t%s ; %s ; %s ; %.2f ; %.2f\n", presu.codigo, presu.fecha, presu.cuit, presu.total, presu.descuento);
+
+        fread(&presu, sizeof (Presupuesto), 1, pf);
     }
-   // system("color C");
-  //  printf("presione [INTRO] para continuar...");
-   // getchar();
+
     fclose(pf);
-} 
-void ModifPresu(){
-    FILE *pf,*pfaux;
+}
+
+void ModifPresu() {
+    FILE *pf, *pfaux;
     Presupuesto presu;
     char codigoaux[5];
-    pf = fopen("Presupuesto.dat","r+");
-    pfaux = fopen("Presupuestoaux.dat","r+");
+    int opcion;
+    pf = fopen("Presupuesto.txt", "r+");
+    pfaux = fopen("Presupuestoaux.txt", "r+");
     printf("Ingrese Código\n");
-    scanf("%s",codigoaux);
-    fread(&presu,sizeof(Presupuesto),1,pf);
-        while (!feof(pf)){
-                if (presu.codigo != codigoaux){
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&presu,sizeof(Presupuesto),1,pfaux);
-                }else{
+    scanf("%s", codigoaux);
+    fread(&presu, sizeof (Presupuesto), 1, pf);
+    while (!feof(pf)) {
+        if (strcmp(presu.codigo, codigoaux) == 0) {
+            fseek(pfaux, 0l, SEEK_END);
+            fwrite(&presu, sizeof (Presupuesto), 1, pfaux);
+        
+            printf("Ingrese  opcion a modificar: 1 Fecha, 2 Cuit, 3 Total, 4 Descuento\n");
+            scanf("%i", &opcion);
+            switch (opcion) {
+                case 1:
                     printf("Ingrese Fecha\n");
-                    scanf("%s",presu.fecha);
+                    scanf("%s", presu.fecha);
+                    break;
+                case 2:
                     printf("Ingrese CUIT\n");
-                    scanf("%s",presu.cuit);
+                    scanf("%s", presu.cuit);
+                    break;
+                case 3: 
                     printf("Ingrese Total\n");
-                    scanf("%f",&presu.total);
+                    scanf("%f", &presu.total);
+                    break;
+                case 4:  
                     printf("Ingrese Descuento\n");
-                    scanf("%f",&presu.descuento);
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&presu,sizeof(Presupuesto),1,pfaux);
-                }
-            fread(&presu,sizeof(Presupuesto),1,pf);
+                    scanf("%f", &presu.descuento);
+                   break; 
+            }
         }
-    fclose(pf);
-    fclose(pfaux);
-    remove("Presupuesto.dat");
-    rename("Presupuestoaux.dat","Presupuesto.dat");
-} 
-void BajaPresu(){
-    FILE *pf,*pfaux;
-    Presupuesto presu;
-    char codigoaux[5];
-    pf = fopen("Presupuesto.dat","r");
-    pfaux = fopen("Presupuestoaux.dat","a");
-    printf("Ingrese Código\n");
-    scanf("%s",codigoaux);
-    fread(&presu,sizeof(Presupuesto),1,pf);
-        while (!feof(pf)){
-                if (presu.codigo != codigoaux){
-                    fseek(pfaux,0l,SEEK_END);
-                    fwrite(&presu,sizeof(Presupuesto),1,pfaux);
-                }
-            fread(&presu,sizeof(Presupuesto),1,pf);
+                    fseek(pfaux, 0l, SEEK_END);
+                    fwrite(&presu, sizeof (Presupuesto), 1, pfaux);
+            }
+            fread(&presu, sizeof (Presupuesto), 1, pf);
+        
+    
+        fclose(pf);
+        fclose(pfaux);
+        remove("Presupuesto.txt");
+        rename("Presupuestoaux.txt", "Presupuesto.txt");
+    }
+
+    void BajaPresu() {
+        FILE *pf, *pfaux;
+        Presupuesto presu;
+        char codigoaux[5];
+        pf = fopen("Presupuesto.txt", "r");
+        pfaux = fopen("Presupuestoaux.txt", "a");
+        printf("Ingrese Código\n");
+        scanf("%s", codigoaux);
+        fread(&presu, sizeof (Presupuesto), 1, pf);
+        while (!feof(pf)) {
+            if (strcmp(presu.codigo, codigoaux) != 0) {
+                fseek(pfaux, 0l, SEEK_END);
+                fwrite(&presu, sizeof (Presupuesto), 1, pfaux);
+            }
+            fread(&presu, sizeof (Presupuesto), 1, pf);
         }
-    fclose(pf);
-    fclose(pfaux);
-    remove("Presupuesto.dat");
-    rename("Presupuestoaux.dat","Presupuesto.dat");
-} 
+        fclose(pf);
+        fclose(pfaux);
+        remove("Presupuesto.txt");
+        rename("Presupuestoaux.txt", "Presupuesto.txt");
+    }

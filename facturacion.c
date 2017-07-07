@@ -11,7 +11,7 @@
 void AltaFactura(){   
     FILE *pf;
     Factura factu;
-    pf = fopen("Factura.dat","a");
+    pf = fopen("Factura.txt","a");
     printf("Ingrese Numero de factura\n");
     scanf("%i",&factu.numero);
     printf("Ingrese Fecha\n");

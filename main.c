@@ -31,7 +31,7 @@ int main() {
     int opcion2 = 0;
     int bande =0;
     do {
-        printf("Ya a refistrado su empresa (1-Si, 2-No)\n");
+        printf("Ya a registrado su empresa (1-Si, 2-No)\n");
         scanf("%d", &opcion2);
         fflush(stdin);
         switch (opcion2) {
