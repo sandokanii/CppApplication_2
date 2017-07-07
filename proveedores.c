@@ -11,7 +11,7 @@
 void AltaProvs() {
     FILE *pf;
     Proveedores proveedor;
-    //char codigo[5];
+    char codigo[5];
     char codigo1[5];
     int bandera = 0;
     pf = fopen("Proveedores.txt", "r+");
@@ -104,7 +104,28 @@ void ModifProvs() {
             fseek(pfaux, 0l, SEEK_END);
             fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         } else {
-            printf("no esta registrado");           
+            printf("no esta registrado");
+            /* printf("Ingrese  opcion a modificar: 1 Nombre, 2 Telefono, 3 Email");
+             scanf("%i", &opcion);
+             switch (opcion) {
+                 case 1:
+                     printf("Ingrese Nombre\n");
+                     fflush(stdin);
+                     gets(proveedor.nombre);
+                     break;
+                 case 2:
+                     printf("Ingrese Telefono\n");
+                     fflush(stdin);
+                     scanf("%s", proveedor.telefono);
+                     break;
+                 case 3:
+                     printf("Ingrese Email\n");
+                     fflush(stdin);
+                     scanf("%s", proveedor.email);
+                     break;
+             }*/
+            //fseek(pfaux, 0l, SEEK_END);
+            //fwrite(&proveedor, sizeof (Proveedores), 1, pfaux);
         }
         fread(&proveedor, sizeof (Proveedores), 1, pf);
         printf("no se k paso");
