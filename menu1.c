@@ -52,10 +52,10 @@ void menu1(){
                                 break;
                             case 5:
                                 //AltaFactura();
-                                printf("\t\t-----------------\n");
-                                printf("\t\t-  Version 2.0  -\n");
-                                printf("\t\t-    paypal     -\n");
-                                printf("\t\t-----------------\n");
+                                printf("\t\t-------------------\n");
+                                printf("\t\t-  Version 2.0    -\n");
+                                printf("\t\t-    paypal 999   -\n");
+                                printf("\t\t-------------------\n");
                                 break;
                                 case 6:
                                 menu();
